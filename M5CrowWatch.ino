@@ -9,7 +9,7 @@ Then upload the sketch normally.
 https://github.com/me-no-dev/arduino-esp32fs-plugin
 */
 
-
+#include "FS.h"
 #include <M5Stack.h>
 #include <WiFi.h>
 #include "SPIFFS.h"
@@ -27,15 +27,21 @@ AudioFileSourceID3 *id3;
 
 void setup()
 {
-  M5.begin();
+  M5.begin(true,false,false,false);
   M5.Power.begin();
   WiFi.mode(WIFI_OFF); 
   SPIFFS.begin();
   delay(500);
+
+  M5.Lcd.drawJpgFile(SPIFFS, "/crow.jpg", 0, 0);
+
+  delay(10000);
   
   M5.Lcd.setTextFont(2);
   M5.Lcd.printf("Sample MP3 playback begins...\n");
   Serial.printf("Sample MP3 playback begins...\n");
+
+ 
   
   // pno_cs from https://ccrma.stanford.edu/~jos/pasp/Sound_Examples.html
   file = new AudioFileSourceSPIFFS("/crow3.mp3");
@@ -48,6 +54,7 @@ void setup()
 
 void loop()
 {
+  
   if (mp3->isRunning()) {
     if (!mp3->loop()) mp3->stop();
   } else {
