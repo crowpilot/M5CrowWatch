@@ -15,7 +15,7 @@ data/config.txt<br />
 <br />
 使用素材<br />
 カラスボイス https://taira-komori.jpn.org/animals01.html<br />
-カラス写真 CrowPilot撮影（画像単体での無断使用禁止、等プログラム内で使用してください。）<br />
+カラス写真 CrowPilot撮影（画像単体での無断使用禁止、本プログラム内で使用してください。）<br />
 <br />
 Crow Watch<br />
 How to use<br />
