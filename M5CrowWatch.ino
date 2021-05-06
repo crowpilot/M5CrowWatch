@@ -89,7 +89,7 @@ void loop()
   M5.Lcd.setCursor(50,180);
   M5.Lcd.printf("%02d:%02d",timeinfo.tm_hour,timeinfo.tm_min);
 
-  if(timeinfo.tm_min%30 != 0){
+  if((timeinfo.tm_min%30 != 0)and (timeinfo.tm_hour>5 and timeinfo.tm_hour<20)){
     flg=1;
   }
 
