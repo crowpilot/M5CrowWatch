@@ -94,7 +94,13 @@ void loop()
   }
 
   if((timeinfo.tm_min%60 == 0 )and (flg==1)){
-    for(int i=0;i<timeinfo.tm_hour;i++){
+    int count;
+    if(timeinfo.tm_hour<13){
+      count=timeinfo.tm_hour;
+    }else{
+      count=timeinfo.tm_hour%12;
+    }
+    for(int i=0;i<count;i++){
       caw();
     }
     flg=0;
