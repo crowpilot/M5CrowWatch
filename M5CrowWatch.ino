@@ -63,6 +63,8 @@ void setup()
   //M5.Lcd.println(WiFi.localIP());
   configTime(3600*9,0,"ntp.nict.jp","ntp.jst.mfeed.ad.jp");
   M5.Lcd.setTextSize(4);
+
+   M5.Lcd.setBrightness(255);
 }
 
 void caw(){
@@ -92,7 +94,7 @@ void loop()
   if((timeinfo.tm_min%30 != 0)and (timeinfo.tm_hour>5 and timeinfo.tm_hour<20)){
     flg=1;
   }
-
+  //CAW function
   if((timeinfo.tm_min%60 == 0 )and (flg==1)){
     int count;
     if(timeinfo.tm_hour<13){
@@ -107,6 +109,14 @@ void loop()
   }else if((timeinfo.tm_min%30==0 )and (flg==1)){
     caw();
     flg=0;
+  }
+
+  if(timeinfo.tm_min%60 == 5){
+    if(timeinfo.tm_hour>21 or timeinfo.tm_hour<6){
+      M5.Lcd.setBrightness(10);
+    }else{
+      M5.Lcd.setBrightness(255);
+    }
   }
   
   //caw();
